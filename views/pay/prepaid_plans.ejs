@@ -1,0 +1,99 @@
+<%- include('../template/header'); %>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>General Form</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">General Form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <% var i=0; cat.forEach(dt=> { %>
+                                        <li class="nav-item"><a class="nav-link <%= i == 0 ? 'active' : '' %>"
+                                                href="<%= dt.cat.split(' ').join('_') %>" data-toggle="tab">
+                                                <%= dt.cat.split('_').join(' ') %>
+                                            </a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="#timeline"
+                                            data-toggle="tab">Timeline</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#settings"
+                                            data-toggle="tab">Settings</a></li> -->
+                                        <% i++; }) %>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <% var i=0; cat.forEach(ca=> { %>
+                                    <div class="active tab-pane" id="<%= ca.cat.split(' ').join(' _') %>">
+                                                    <% let result=dtls.filter(e=> e.CatType[0] == ca.cat);
+                                                        result.forEach(cdt => { %>
+                                                        <!-- Post -->
+                                                        <div class="post">
+                                                            <div class="user-block">
+                                                                <span class="username">
+                                                                    <a href="#">
+                                                                        <%= cdt.Amount[0] %>
+                                                                    </a>
+                                                                    <a href="#"
+                                                                        class="float-right btn-tool"><strong>Effective
+                                                                            From: </strong>
+                                                                        <%= cdt.EffectiveFrom[0] %> <strong>Effective
+                                                                                To: </strong>
+                                                                            <%= cdt.EffectiveTo[0] %>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                            <!-- /.user-block -->
+                                                            <p>
+                                                                <%= cdt.PlanDescription[0] %>
+                                                            </p>
+
+                                                            <p>
+                                                                <a href="#" class="link-black text-sm mr-2"><i
+                                                                        class="fas fa-share mr-1"></i>
+                                                                    Share</a>
+                                                                <a href="#" class="link-black text-sm"><i
+                                                                        class="far fa-thumbs-up mr-1"></i>
+                                                                    Like</a>
+                                                                <span class="float-right">
+                                                                    <a href="#" class="link-black text-sm">
+                                                                        <i class="far fa-comments mr-1"></i> Comments
+                                                                        (5)
+                                                                    </a>
+                                                                </span>
+                                                            </p>
+
+                                                            <input class="form-control form-control-sm" type="text"
+                                                                placeholder="Type a comment">
+                                                        </div>
+                                                        <!-- /.post -->
+                                                        <% }); %>
+                            </div>
+                            <% i++; }) %>
+                                <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+    </div>
+    </div>
+    </section>
+    </div>
+    
